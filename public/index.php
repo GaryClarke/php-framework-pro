@@ -11,8 +11,10 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 // request received
 $request = Request::createFromGlobals();
 
+$router = new \GaryClarke\Framework\Routing\Router();
+
 // perform some logic
-$kernel = new Kernel();
+$kernel = new Kernel($router);
 
 // send response (string of content)
 $response = $kernel->handle($request);
