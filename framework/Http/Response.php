@@ -10,6 +10,9 @@ class Response
         private array $headers = []
     )
     {
+        // Must be set before sending content
+        // So best to create on instantiation like here
+        http_response_code($this->status);
     }
 
     public function send(): void
