@@ -14,10 +14,17 @@
             "GaryClarke\\Framework\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "GaryClarke\\Framework\\Tests\\": "tests"
+        }
+    },
     "require-dev": {
-        "symfony/var-dumper": "6.3.x-dev"
+        "symfony/var-dumper": "6.3.x-dev",
+        "phpunit/phpunit": "10.1.x-dev"
     },
     "require": {
-        "nikic/fast-route": "dev-master"
+        "nikic/fast-route": "dev-master",
+        "psr/container": "2.0.x-dev"
     }
 }
