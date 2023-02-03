@@ -2,7 +2,6 @@
 
 use GaryClarke\Framework\Http\Kernel;
 use GaryClarke\Framework\Http\Request;
-use GaryClarke\Framework\Http\Response;
 
 define('BASE_PATH', dirname(__DIR__));
 

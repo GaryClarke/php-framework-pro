@@ -1,0 +1,23 @@
+{
+    "name": "garyclarketech/php-framework-pro",
+    "description": "A PHP framework tutorial project",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gary Clarke",
+            "email": "info@garyclarke.tech"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "GaryClarke\\Framework\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "6.3.x-dev"
+    },
+    "require": {
+        "nikic/fast-route": "dev-master"
+    }
+}

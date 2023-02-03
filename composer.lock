@@ -4,8 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3e91143d6fdf3f663f665eb0559778b",
+    "content-hash": "45db679556ef570bcba0da51c149f1b1",
     "packages": [
+        {
+            "name": "garyclarketech/php-framework-pro",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "framework",
+                "reference": "29bc7d1ec1088144da00aa31c9ac988d38394013"
+            },
+            "require": {
+                "nikic/fast-route": "dev-master"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "6.3.x-dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GaryClarke\\Framework\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gary Clarke",
+                    "email": "info@garyclarke.tech"
+                }
+            ],
+            "description": "A PHP framework tutorial project",
+            "transport-options": {
+                "relative": true
+            }
+        },
         {
             "name": "nikic/fast-route",
             "version": "dev-master",
@@ -80,12 +114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534"
+                "reference": "f9c7affe77a00ae32ca127ca6833d034e6d33f25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
-                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f9c7affe77a00ae32ca127ca6833d034e6d33f25",
+                "reference": "f9c7affe77a00ae32ca127ca6833d034e6d33f25",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +135,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -140,7 +174,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/main"
             },
             "funding": [
                 {
@@ -156,7 +190,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-01-30T17:25:47+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -164,12 +198,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "e27132767b57c7a9811dcfa344ded9494cc13e21"
+                "reference": "967f55b434dbdc00edb570ed7a7c6fcce8bb272a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/e27132767b57c7a9811dcfa344ded9494cc13e21",
-                "reference": "e27132767b57c7a9811dcfa344ded9494cc13e21",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/967f55b434dbdc00edb570ed7a7c6fcce8bb272a",
+                "reference": "967f55b434dbdc00edb570ed7a7c6fcce8bb272a",
                 "shasum": ""
             },
             "require": {
@@ -244,13 +278,13 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-13T09:23:11+00:00"
+            "time": "2023-01-26T14:58:07+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "nikic/fast-route": 20,
+        "garyclarketech/php-framework-pro": 20,
         "symfony/var-dumper": 20
     },
     "prefer-stable": false,
