@@ -34,6 +34,32 @@ class ContainerTest extends TestCase
         // Do something
         $container->add('foobar');
     }
+
+    /** @test */
+    public function can_check_if_the_container_has_a_service(): void
+    {
+        // Setup
+        $container = new Container();
+
+        // Do something
+        $container->add('dependant-class', DependantClass::class);
+
+        $this->assertTrue($container->has('dependant-class'));
+        $this->assertFalse($container->has('non-existent-class'));
+    }
+
+    /** @test */
+    public function a_ContainerException_is_thrown_if_the_container_does_not_have_a_service()
+    {
+        // Setup
+        $container = new Container();
+
+        // Expect exception
+        $this->expectException(ContainerException::class);
+
+        // Do something
+        $container->add('foobar');
+    }
 }
 
 
