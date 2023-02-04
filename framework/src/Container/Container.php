@@ -15,7 +15,7 @@ class Container implements ContainerInterface
     {
         if (null === $concrete) {
             if (!class_exists($id)) {
-                throw new ContainerException("Service $id could not be found");
+                throw new ContainerException("Service $id could not be added");
             }
 
             $concrete = $id;
