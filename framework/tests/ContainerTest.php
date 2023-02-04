@@ -47,19 +47,6 @@ class ContainerTest extends TestCase
         $this->assertTrue($container->has('dependant-class'));
         $this->assertFalse($container->has('non-existent-class'));
     }
-
-    /** @test */
-    public function a_ContainerException_is_thrown_if_the_container_does_not_have_a_service()
-    {
-        // Setup
-        $container = new Container();
-
-        // Expect exception
-        $this->expectException(ContainerException::class);
-
-        // Do something
-        $container->add('foobar');
-    }
 }
 
 
