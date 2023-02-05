@@ -53,11 +53,12 @@ class ContainerTest extends TestCase
     {
         $container = new Container();
 
-        $container->add('dependant-service', DependantClass::class);
+        $dependantService = $container->get(DependantClass::class);
 
-        $dependantService = $container->get('dependant-service');
+        $dependancyService = $dependantService->getDependency();
 
-        $this->assertInstanceOf(DependencyClass::class, $dependantService->getDependency());
+        $this->assertInstanceOf(DependencyClass::class, $dependancyService);
+        $this->assertInstanceOf(SubDependencyClass::class, $dependancyService->getSubDependency());
     }
 }
 

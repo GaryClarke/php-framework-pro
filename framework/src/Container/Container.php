@@ -39,7 +39,7 @@ class Container implements ContainerInterface
         return $object;
     }
 
-    private function resolve($class)
+    private function resolve($class): object
     {
         // 1. Instantiate a Reflection class (dump and check)
         $reflectionClass = new \ReflectionClass($class);
@@ -63,6 +63,29 @@ class Container implements ContainerInterface
 
         // 7. Return the object
         return $service;
+    }
+
+    private function resolveClassDependencies(array $reflectionParameters): array
+    {
+        // 1. Initialize empty dependencies array (required by newInstanceArgs)
+        $classDependencies = [];
+
+        // 2. Try to locate and instantiate each parameter
+        /** @var \ReflectionParameter $parameter */
+        foreach ($reflectionParameters as $parameter) {
+
+            // Get the parameter's ReflectionNamedType as $serviceType
+            $serviceType = $parameter->getType();
+
+            // Try to instantiate using $serviceType's name
+            $service = $this->get($serviceType->getName());
+
+            // Add the service to the classDependencies array
+            $classDependencies[] = $service;
+        }
+
+        // 3. Return the classDependencies array
+        return $classDependencies;
     }
 
     public function has(string $id): bool
