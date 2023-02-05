@@ -39,6 +39,32 @@ class Container implements ContainerInterface
         return $object;
     }
 
+    private function resolve($class)
+    {
+        // 1. Instantiate a Reflection class (dump and check)
+        $reflectionClass = new \ReflectionClass($class);
+
+        // 2. Use Reflection to try to obtain a class constructor
+        $constructor = $reflectionClass->getConstructor();
+
+        // 3. If there is no constructor, simply instantiate
+        if (null === $constructor) {
+            return $reflectionClass->newInstance();
+        }
+
+        // 4. Get the constructor parameters
+        $constructorParams = $constructor->getParameters();
+
+        // 5. Obtain dependencies
+        $classDependencies = $this->resolveClassDependencies($constructorParams);
+
+        // 6. Instantiate with dependencies
+        $service = $reflectionClass->newInstanceArgs($classDependencies);
+
+        // 7. Return the object
+        return $service;
+    }
+
     public function has(string $id): bool
     {
         return array_key_exists($id, $this->services);
