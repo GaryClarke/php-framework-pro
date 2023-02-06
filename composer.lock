@@ -12,18 +12,26 @@
             "dist": {
                 "type": "path",
                 "url": "framework",
-                "reference": "29bc7d1ec1088144da00aa31c9ac988d38394013"
+                "reference": "41b69576d3277ff3b8e385faa56597e07574e7b1"
             },
             "require": {
-                "nikic/fast-route": "dev-master"
+                "league/container": "^4.0.0",
+                "nikic/fast-route": "dev-master",
+                "psr/container": "2.0.x-dev"
             },
             "require-dev": {
+                "phpunit/phpunit": "10.1.x-dev",
                 "symfony/var-dumper": "6.3.x-dev"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "GaryClarke\\Framework\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "GaryClarke\\Framework\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -39,6 +47,89 @@
             "transport-options": {
                 "relative": true
             }
+        },
+        {
+            "name": "league/container",
+            "version": "4.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/container.git",
+                "reference": "388e992884ab75632d93dbaf4d29ec024d64b964"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/container/zipball/388e992884ab75632d93dbaf4d29ec024d64b964",
+                "reference": "388e992884ab75632d93dbaf4d29ec024d64b964",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0",
+                "psr/container": "^1.1 || ^2.0"
+            },
+            "provide": {
+                "psr/container-implementation": "^1.0"
+            },
+            "replace": {
+                "orno/di": "~2.0"
+            },
+            "require-dev": {
+                "nette/php-generator": "^3.4",
+                "nikic/php-parser": "^4.10",
+                "phpstan/phpstan": "^0.12.47",
+                "phpunit/phpunit": "^8.5.17",
+                "roave/security-advisories": "dev-latest",
+                "scrutinizer/ocular": "^1.8",
+                "squizlabs/php_codesniffer": "^3.6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev",
+                    "dev-4.x": "4.x-dev",
+                    "dev-3.x": "3.x-dev",
+                    "dev-2.x": "2.x-dev",
+                    "dev-1.x": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Container\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phil Bennett",
+                    "email": "mail@philbennett.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A fast and intuitive dependency injection container.",
+            "homepage": "https://github.com/thephpleague/container",
+            "keywords": [
+                "container",
+                "dependency",
+                "di",
+                "injection",
+                "league",
+                "provider",
+                "service"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/container/issues",
+                "source": "https://github.com/thephpleague/container/tree/4.x"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/philipobenito",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-02T09:18:15+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -105,6 +196,60 @@
                 "source": "https://github.com/nikic/FastRoute/tree/master"
             },
             "time": "2021-06-21T15:01:25+00:00"
+        },
+        {
+            "name": "psr/container",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "90db7b9ac2a2c5b849fcb69dde58f3ae182c68f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/90db7b9ac2a2c5b849fcb69dde58f3ae182c68f5",
+                "reference": "90db7b9ac2a2c5b849fcb69dde58f3ae182c68f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/container/issues",
+                "source": "https://github.com/php-fig/container/tree/master"
+            },
+            "time": "2022-07-19T17:36:59+00:00"
         }
     ],
     "packages-dev": [
@@ -198,12 +343,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "967f55b434dbdc00edb570ed7a7c6fcce8bb272a"
+                "reference": "4beb1aa536bfd47ae179dae1f694853c946e315a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/967f55b434dbdc00edb570ed7a7c6fcce8bb272a",
-                "reference": "967f55b434dbdc00edb570ed7a7c6fcce8bb272a",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/4beb1aa536bfd47ae179dae1f694853c946e315a",
+                "reference": "4beb1aa536bfd47ae179dae1f694853c946e315a",
                 "shasum": ""
             },
             "require": {
@@ -278,7 +423,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-26T14:58:07+00:00"
+            "time": "2023-02-02T07:48:03+00:00"
         }
     ],
     "aliases": [],

@@ -25,6 +25,7 @@
     },
     "require": {
         "nikic/fast-route": "dev-master",
-        "psr/container": "2.0.x-dev"
+        "psr/container": "2.0.x-dev",
+        "league/container": "^4.0.0"
     }
 }
