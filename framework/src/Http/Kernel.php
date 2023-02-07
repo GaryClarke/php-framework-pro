@@ -3,10 +3,11 @@
 namespace GaryClarke\Framework\Http;
 
 use GaryClarke\Framework\Routing\Router;
+use GaryClarke\Framework\Routing\RouterInterface;
 
 class Kernel
 {
-    public function __construct(private Router $router)
+    public function __construct(private RouterInterface $router)
     {
     }
 
