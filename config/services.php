@@ -2,6 +2,11 @@
 
 $container = new \League\Container\Container();
 
+# parameters for application config
+$routes = include BASE_PATH . '/routes/web.php';
+
+# services
+
 $container->add(
     GaryClarke\Framework\Routing\RouterInterface::class,
     GaryClarke\Framework\Routing\Router::class
