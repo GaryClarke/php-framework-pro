@@ -7,21 +7,23 @@ use FastRoute\RouteCollector;
 use GaryClarke\Framework\Http\HttpException;
 use GaryClarke\Framework\Http\HttpRequestMethodException;
 use GaryClarke\Framework\Http\Request;
+use Psr\Container\ContainerInterface;
 use function FastRoute\simpleDispatcher;
 
 class Router implements RouterInterface
 {
     private array $routes;
 
-    public function dispatch(Request $request): array
+    public function dispatch(Request $request, ContainerInterface $container): array
     {
         $routeInfo = $this->extractRouteInfo($request);
 
         [$handler, $vars] = $routeInfo;
 
         if (is_array($handler)) {
-            [$controller, $method] = $handler;
-            $handler = [new $controller, $method];
+            [$controllerId, $method] = $handler;
+            $controller = $container->get($controllerId);
+            $handler = [$controller, $method];
         }
 
         return [$handler, $vars];

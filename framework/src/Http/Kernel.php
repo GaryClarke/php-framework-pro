@@ -4,10 +4,14 @@ namespace GaryClarke\Framework\Http;
 
 use GaryClarke\Framework\Routing\Router;
 use GaryClarke\Framework\Routing\RouterInterface;
+use Psr\Container\ContainerInterface;
 
 class Kernel
 {
-    public function __construct(private RouterInterface $router)
+    public function __construct(
+        private RouterInterface $router,
+        private ContainerInterface $container
+    )
     {
     }
 
@@ -15,14 +19,12 @@ class Kernel
     {
         try {
 
-            [$routeHandler, $vars] = $this->router->dispatch($request);
+            [$routeHandler, $vars] = $this->router->dispatch($request, $this->container);
 
             $response = call_user_func_array($routeHandler, $vars);
 
         } catch (HttpException $exception) {
             $response = new Response($exception->getMessage(), $exception->getStatusCode());
-        } catch (\Exception $exception) {
-            $response = new Response($exception->getMessage(), 500);
         }
 
         return $response;
