@@ -34,8 +34,14 @@ $container->add(GaryClarke\Framework\Http\Kernel::class)
 $container->addShared('filesystem-loader', \Twig\Loader\FilesystemLoader::class)
     ->addArgument(new \League\Container\Argument\Literal\StringArgument($templatesPath));
 
-$container->addShared(\Twig\Environment::class)
+$container->addShared('twig', \Twig\Environment::class)
     ->addArgument('filesystem-loader');
+
+$container->add(\GaryClarke\Framework\Controller\AbstractController::class);
+
+$container->inflector(\GaryClarke\Framework\Controller\AbstractController::class)
+    ->invokeMethod('setContainer', [$container]);
+
 
 return $container;
 
