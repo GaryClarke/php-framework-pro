@@ -9,7 +9,7 @@ class PostsController extends AbstractController
 {
     public function show(int $id): Response
     {
-        return $this->render('posts.html.twig', [
+        return $this->render('post.html.twig', [
             'postId' => $id
         ]);
     }
