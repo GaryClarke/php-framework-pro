@@ -2,6 +2,7 @@
 
 namespace GaryClarke\Framework\Http;
 
+use Doctrine\DBAL\Connection;
 use GaryClarke\Framework\Routing\Router;
 use GaryClarke\Framework\Routing\RouterInterface;
 use Psr\Container\ContainerInterface;
@@ -21,6 +22,8 @@ class Kernel
     public function handle(Request $request): Response
     {
         try {
+
+            dd($this->container->get(Connection::class));
 
             [$routeHandler, $vars] = $this->router->dispatch($request, $this->container);
 
