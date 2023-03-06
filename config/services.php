@@ -37,6 +37,9 @@ $container->add(GaryClarke\Framework\Http\Kernel::class)
     ->addArgument(GaryClarke\Framework\Routing\RouterInterface::class)
     ->addArgument($container);
 
+$container->add(\GaryClarke\Framework\Console\Kernel::class)
+    ->addArguments([$container, \GaryClarke\Framework\Console\Application::class]);
+
 $container->addShared('filesystem-loader', \Twig\Loader\FilesystemLoader::class)
     ->addArgument(new \League\Container\Argument\Literal\StringArgument($templatesPath));
 
@@ -56,9 +59,6 @@ $container->add(\GaryClarke\Framework\Dbal\ConnectionFactory::class)
 $container->addShared(\Doctrine\DBAL\Connection::class, function () use ($container): \Doctrine\DBAL\Connection {
     return $container->get(\GaryClarke\Framework\Dbal\ConnectionFactory::class)->create();
 });
-
-$container->add(\GaryClarke\Framework\Console\Kernel::class)
-    ->addArgument($container);
 
 return $container;
 

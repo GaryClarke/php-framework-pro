@@ -7,7 +7,10 @@ use Psr\Container\ContainerInterface;
 
 final class Kernel
 {
-    public function __construct(private ContainerInterface $container)
+    public function __construct(
+        private ContainerInterface $container,
+        private Application $application
+    )
     {
     }
 
@@ -17,9 +20,10 @@ final class Kernel
         $this->registerCommands();
 
         // Run the console application, returning a status code
+        $status = $this->application->run();
 
         // return the status code
-        return 0;
+        return $status;
     }
 
     private function registerCommands(): void
