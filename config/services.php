@@ -15,6 +15,11 @@ $templatesPath = BASE_PATH . '/templates';
 $container->add('APP_ENV', new \League\Container\Argument\Literal\StringArgument($appEnv));
 $databaseUrl = 'sqlite:///' . BASE_PATH . '/var/db.sqlite';
 
+$container->add(
+    'base-commands-namespace',
+    new \League\Container\Argument\Literal\StringArgument('GaryClarke\\Framework\\Console\\Command\\')
+);
+
 # services
 
 $container->add(
@@ -52,6 +57,8 @@ $container->addShared(\Doctrine\DBAL\Connection::class, function () use ($contai
     return $container->get(\GaryClarke\Framework\Dbal\ConnectionFactory::class)->create();
 });
 
+$container->add(\GaryClarke\Framework\Console\Kernel::class)
+    ->addArgument($container);
 
 return $container;
 
