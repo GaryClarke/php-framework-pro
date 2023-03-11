@@ -47,6 +47,7 @@ class MigrateDatabase implements CommandInterface
                 $migrationObject->up($schema);
 
                 // Add migration to database
+                $this->insertMigration($migration);
             }
 
             // Execute the SQL query
@@ -61,6 +62,17 @@ class MigrateDatabase implements CommandInterface
 
             throw $throwable;
         }
+    }
+
+    private function insertMigration(string $migration): void
+    {
+        $sql = "INSERT INTO migrations (migration) VALUES (?)";
+
+        $stmt = $this->connection->prepare($sql);
+
+        $stmt->bindValue(1, $migration);
+
+        $stmt->executeStatement();
     }
 
     private function getMigrationFiles(): array
