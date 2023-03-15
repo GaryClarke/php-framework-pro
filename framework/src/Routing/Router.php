@@ -4,6 +4,7 @@ namespace GaryClarke\Framework\Routing;
 
 use FastRoute\Dispatcher;
 use FastRoute\RouteCollector;
+use GaryClarke\Framework\Controller\AbstractController;
 use GaryClarke\Framework\Http\HttpException;
 use GaryClarke\Framework\Http\HttpRequestMethodException;
 use GaryClarke\Framework\Http\Request;
@@ -23,6 +24,9 @@ class Router implements RouterInterface
         if (is_array($handler)) {
             [$controllerId, $method] = $handler;
             $controller = $container->get($controllerId);
+            if (is_subclass_of($controller, AbstractController::class)) {
+                $controller->setRequest($request);
+            }
             $handler = [$controller, $method];
         }
 

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use GaryClarke\Framework\Controller\AbstractController;
+use GaryClarke\Framework\Http\Request;
 use GaryClarke\Framework\Http\Response;
 
 class PostsController extends AbstractController
@@ -21,6 +22,6 @@ class PostsController extends AbstractController
 
     public function store(): void
     {
-        dd('got here!');
+        dd($this->request->postParams);
     }
 }
