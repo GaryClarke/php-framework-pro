@@ -1,8 +1,11 @@
 <?php
 
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\DBAL\Types\Types;
+
 return new class
 {
-    public function up(): void
+    public function up(Schema $schema): void
     {
         // Table creation / modification code goes here
 

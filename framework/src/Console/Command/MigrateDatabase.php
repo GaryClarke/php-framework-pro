@@ -51,6 +51,11 @@ class MigrateDatabase implements CommandInterface
             }
 
             // Execute the SQL query
+            $sqlArray = $schema->toSql($this->connection->getDatabasePlatform());
+
+            foreach ($sqlArray as $sql) {
+                $this->connection->executeQuery($sql);
+            }
 
             $this->connection->commit();
 
