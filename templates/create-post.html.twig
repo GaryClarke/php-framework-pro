@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <form>
+{% block main %}
+    <form action="/posts" method="post">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" aria-describedby="titleHelp">
+            <input name="title" type="text" class="form-control" id="title" aria-describedby="titleHelp" required>
             <div id="titleHelp" class="form-text">Give your post a catchy title.</div>
         </div>
         <div class="mb-3">
             <label for="body" class="form-label">Body</label>
-            <textarea name="body" id="" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="body" id="" cols="30" rows="10" class="form-control" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
