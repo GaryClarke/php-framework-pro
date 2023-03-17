@@ -4,20 +4,26 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Repository\PostMapper;
+use App\Repository\PostRepository;
 use GaryClarke\Framework\Controller\AbstractController;
 use GaryClarke\Framework\Http\Request;
 use GaryClarke\Framework\Http\Response;
 
 class PostsController extends AbstractController
 {
-    public function __construct(private PostMapper $postMapper)
+    public function __construct(
+        private PostMapper $postMapper,
+        private PostRepository $postRepository
+    )
     {
     }
 
     public function show(int $id): Response
     {
+        $post = $this->postRepository->findById($id);
+
         return $this->render('post.html.twig', [
-            'postId' => $id
+            'post' => $post
         ]);
     }
 
