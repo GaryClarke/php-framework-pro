@@ -43,11 +43,20 @@ $container->add(\GaryClarke\Framework\Console\Application::class)
 $container->add(\GaryClarke\Framework\Console\Kernel::class)
     ->addArguments([$container, \GaryClarke\Framework\Console\Application::class]);
 
-$container->addShared('filesystem-loader', \Twig\Loader\FilesystemLoader::class)
-    ->addArgument(new \League\Container\Argument\Literal\StringArgument($templatesPath));
+$container->addShared(
+    \GaryClarke\Framework\Session\SessionInterface::class,
+    \GaryClarke\Framework\Session\Session::class
+);
 
-$container->addShared('twig', \Twig\Environment::class)
-    ->addArgument('filesystem-loader');
+$container->add('template-renderer-factory', \GaryClarke\Framework\Template\TwigFactory::class)
+    ->addArguments([
+        \GaryClarke\Framework\Session\SessionInterface::class,
+        new \League\Container\Argument\Literal\StringArgument($templatesPath)
+    ]);
+
+$container->addShared('twig', function () use ($container) {
+    return $container->get('template-renderer-factory')->create();
+});
 
 $container->add(\GaryClarke\Framework\Controller\AbstractController::class);
 
