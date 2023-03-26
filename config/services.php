@@ -36,7 +36,7 @@ $container->extend(GaryClarke\Framework\Routing\RouterInterface::class)
 $container->add(
     \GaryClarke\Framework\Http\Middleware\RequestHandlerInterface::class,
     \GaryClarke\Framework\Http\Middleware\RequestHandler::class
-);
+)->addArgument($container);
 
 $container->add(GaryClarke\Framework\Http\Kernel::class)
     ->addArguments([
