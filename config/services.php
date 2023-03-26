@@ -33,9 +33,17 @@ $container->extend(GaryClarke\Framework\Routing\RouterInterface::class)
         [new \League\Container\Argument\Literal\ArrayArgument($routes)]
     );
 
+$container->add(
+    \GaryClarke\Framework\Http\Middleware\RequestHandlerInterface::class,
+    \GaryClarke\Framework\Http\Middleware\RequestHandler::class
+);
+
 $container->add(GaryClarke\Framework\Http\Kernel::class)
-    ->addArgument(GaryClarke\Framework\Routing\RouterInterface::class)
-    ->addArgument($container);
+    ->addArguments([
+        GaryClarke\Framework\Routing\RouterInterface::class,
+        $container,
+        \GaryClarke\Framework\Http\Middleware\RequestHandlerInterface::class
+    ]);
 
 $container->add(\GaryClarke\Framework\Console\Application::class)
     ->addArgument($container);

@@ -3,6 +3,7 @@
 namespace GaryClarke\Framework\Http;
 
 use Doctrine\DBAL\Connection;
+use GaryClarke\Framework\Http\Middleware\RequestHandlerInterface;
 use GaryClarke\Framework\Routing\Router;
 use GaryClarke\Framework\Routing\RouterInterface;
 use Psr\Container\ContainerInterface;
@@ -13,7 +14,8 @@ class Kernel
 
     public function __construct(
         private RouterInterface $router,
-        private ContainerInterface $container
+        private ContainerInterface $container,
+        private RequestHandlerInterface $requestHandler
     )
     {
         $this->appEnv = $this->container->get('APP_ENV');
@@ -23,9 +25,11 @@ class Kernel
     {
         try {
 
-            [$routeHandler, $vars] = $this->router->dispatch($request, $this->container);
+            $response = $this->requestHandler->handle($request);
 
-            $response = call_user_func_array($routeHandler, $vars);
+            //[$routeHandler, $vars] = $this->router->dispatch($request, $this->container);
+            //
+            //$response = call_user_func_array($routeHandler, $vars);
 
         } catch (\Exception $exception) {
             $response = $this->createExceptionResponse($exception);
