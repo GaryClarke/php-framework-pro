@@ -88,5 +88,11 @@ $container->add(
     new \League\Container\Argument\Literal\StringArgument(BASE_PATH . '/migrations')
 ]);
 
+$container->add(\GaryClarke\Framework\Http\Middleware\RouterDispatch::class)
+    ->addArguments([
+        \GaryClarke\Framework\Routing\RouterInterface::class,
+        $container
+    ]);
+
 return $container;
 
