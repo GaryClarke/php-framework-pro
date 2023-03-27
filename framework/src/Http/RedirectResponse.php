@@ -12,5 +12,6 @@ class RedirectResponse extends Response
     public function send(): void
     {
         header('Location: ' . $this->getHeader('location'), true, $this->getStatus());
+        exit;
     }
 }
