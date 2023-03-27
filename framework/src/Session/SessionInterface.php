@@ -4,6 +4,9 @@ namespace GaryClarke\Framework\Session;
 
 interface SessionInterface
 {
+
+    public function start(): void;
+
     public function set(string $key, $value): void;
 
     public function get(string $key, $default = null);
