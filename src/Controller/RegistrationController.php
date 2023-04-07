@@ -27,6 +27,9 @@ class RegistrationController extends AbstractController
 
         // Validate
         // If validation errors,
+        if ($form->hasValidationErrors()) {
+            dd($form->getValidationErrors());
+        }
         // add to session, redirect to form
 
         // register the user by calling $form->save()
