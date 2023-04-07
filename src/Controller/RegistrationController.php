@@ -11,4 +11,9 @@ class RegistrationController extends AbstractController
     {
         return $this->render('register.html.twig');
     }
+
+    public function register(): Response
+    {
+        dd($this->request);
+    }
 }
