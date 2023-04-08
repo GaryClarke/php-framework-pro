@@ -3,12 +3,17 @@
 namespace App\Form\User;
 
 use App\Entity\User;
+use App\Repository\UserMapper;
 
 class RegistrationForm
 {
     private string $username;
     private string $password;
-    private array $errors;
+    private array $errors = [];
+
+    public function __construct(private UserMapper $userMapper)
+    {
+    }
 
     public function setFields(string $username, string $password): void
     {
