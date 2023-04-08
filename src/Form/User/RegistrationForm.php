@@ -2,6 +2,8 @@
 
 namespace App\Form\User;
 
+use App\Entity\User;
+
 class RegistrationForm
 {
     private string $username;
@@ -12,6 +14,15 @@ class RegistrationForm
     {
         $this->username = $username;
         $this->password = $password;
+    }
+
+    public function save(): User
+    {
+        $user = User::create($this->username, $this->password);
+
+        $this->userMapper->save($user);
+
+        return $user;
     }
 
     public function hasValidationErrors(): bool

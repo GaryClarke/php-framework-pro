@@ -36,8 +36,9 @@ class RegistrationController extends AbstractController
             return new RedirectResponse('/register');
         }
 
-
         // register the user by calling $form->save()
+        $user = $form->save();
+
 
         // Add a session success message
 
