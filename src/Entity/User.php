@@ -30,6 +30,11 @@ class User implements AuthUserInterface
         $this->id = $id;
     }
 
+    public function getAuthId(): int
+    {
+        return $this->id;
+    }
+
     public function getUsername(): string
     {
         return $this->username;

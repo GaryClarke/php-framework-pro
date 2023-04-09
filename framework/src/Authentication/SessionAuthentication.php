@@ -2,10 +2,16 @@
 
 namespace GaryClarke\Framework\Authentication;
 
+use GaryClarke\Framework\Session\SessionInterface;
+
 class SessionAuthentication implements SessionAuthInterface
 {
+    private AuthUserInterface $user;
 
-    public function __construct(private AuthRepositoryInterface $authRepository)
+    public function __construct(
+        private AuthRepositoryInterface $authRepository,
+        private SessionInterface $session
+    )
     {
     }
 
@@ -21,8 +27,6 @@ class SessionAuthentication implements SessionAuthInterface
         // Does the hashed user pw match the hash of the attempted password
         if (password_verify($password, $user->getPassword())) {
 
-            dd($user);
-
             // if yes, log the user in
             $this->login($user);
 
@@ -36,7 +40,14 @@ class SessionAuthentication implements SessionAuthInterface
 
     public function login(AuthUserInterface $user)
     {
-        // TODO: Implement login() method.
+        // Start a session
+        $this->session->start();
+
+        // Log the user in
+        $this->session->set('auth_id', $user->getAuthId());
+
+        // Set the user
+        $this->user = $user;
     }
 
     public function logout()
@@ -46,7 +57,7 @@ class SessionAuthentication implements SessionAuthInterface
 
     public function getUser(): AuthUserInterface
     {
-        // TODO: Implement getUser() method.
+        return $this->user;
     }
 
 }
