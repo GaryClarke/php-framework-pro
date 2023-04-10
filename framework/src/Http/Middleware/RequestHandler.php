@@ -10,6 +10,7 @@ use Psr\Container\ContainerInterface;
 class RequestHandler implements RequestHandlerInterface
 {
     private array $middleware = [
+        ExtractRouteInfo::class,
         StartSession::class,
         Authenticate::class,
         RouterDispatch::class
