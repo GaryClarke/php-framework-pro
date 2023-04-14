@@ -27,12 +27,6 @@ $container->add(
     GaryClarke\Framework\Routing\Router::class
 );
 
-$container->extend(GaryClarke\Framework\Routing\RouterInterface::class)
-    ->addMethodCall(
-        'setRoutes',
-        [new \League\Container\Argument\Literal\ArrayArgument($routes)]
-    );
-
 $container->add(
     \GaryClarke\Framework\Http\Middleware\RequestHandlerInterface::class,
     \GaryClarke\Framework\Http\Middleware\RequestHandler::class
