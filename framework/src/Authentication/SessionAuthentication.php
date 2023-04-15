@@ -28,14 +28,11 @@ class SessionAuthentication implements SessionAuthInterface
         // Does the hashed user pw match the hash of the attempted password
         if (!password_verify($password, $user->getPassword())) {
 
-            // return true
             return false;
         }
 
-        // if yes, log the user in
         $this->login($user);
 
-        // return false
         return true;
     }
 
