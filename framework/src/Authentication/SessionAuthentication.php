@@ -2,12 +2,12 @@
 
 namespace GaryClarke\Framework\Authentication;
 
+use GaryClarke\Framework\Session\Session;
 use GaryClarke\Framework\Session\SessionInterface;
 
 class SessionAuthentication implements SessionAuthInterface
 {
     private AuthUserInterface $user;
-    public const AUTH_KEY = 'auth_id';
 
     public function __construct(
         private AuthRepositoryInterface $authRepository,
@@ -42,7 +42,7 @@ class SessionAuthentication implements SessionAuthInterface
         $this->session->start();
 
         // Log the user in
-        $this->session->set(self::AUTH_KEY, $user->getAuthId());
+        $this->session->set(Session::AUTH_KEY, $user->getAuthId());
 
         // Set the user
         $this->user = $user;

@@ -73,6 +73,11 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">PHP<span style="color: #49a9ff">Framework</span>PRO</a>
+        {% if session().isAuthenticated() %}
+            <a class="navbar-brand" href="/logout">Logout</a>
+        {% else %}
+            <a class="navbar-brand" href="/login">Login</a>
+        {% endif %}
     </div>
 </nav>
 
