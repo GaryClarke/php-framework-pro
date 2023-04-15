@@ -5,13 +5,17 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\User\RegistrationForm;
 use App\Repository\UserMapper;
+use GaryClarke\Framework\Authentication\SessionAuthentication;
 use GaryClarke\Framework\Controller\AbstractController;
 use GaryClarke\Framework\Http\RedirectResponse;
 use GaryClarke\Framework\Http\Response;
 
 class RegistrationController extends AbstractController
 {
-    public function __construct(private UserMapper $userMapper)
+    public function __construct(
+        private UserMapper $userMapper,
+        private SessionAuthentication $authComponent
+    )
     {
     }
 
@@ -52,8 +56,9 @@ class RegistrationController extends AbstractController
         );
 
         // Log the user in
+        $this->authComponent->login($user);
 
         // Redirect to somewhere useful
-        return new RedirectResponse('/');
+        return new RedirectResponse('/dashboard');
     }
 }
