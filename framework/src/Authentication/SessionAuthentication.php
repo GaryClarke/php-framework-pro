@@ -7,6 +7,7 @@ use GaryClarke\Framework\Session\SessionInterface;
 class SessionAuthentication implements SessionAuthInterface
 {
     private AuthUserInterface $user;
+    public const AUTH_KEY = 'auth_id';
 
     public function __construct(
         private AuthRepositoryInterface $authRepository,
@@ -44,7 +45,7 @@ class SessionAuthentication implements SessionAuthInterface
         $this->session->start();
 
         // Log the user in
-        $this->session->set('auth_id', $user->getAuthId());
+        $this->session->set(self::AUTH_KEY, $user->getAuthId());
 
         // Set the user
         $this->user = $user;
