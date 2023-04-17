@@ -3,6 +3,8 @@
 namespace GaryClarke\Framework\Http;
 
 use Doctrine\DBAL\Connection;
+use GaryClarke\Framework\EventDispatcher\EventDispatcher;
+use GaryClarke\Framework\Http\Event\ResponseEvent;
 use GaryClarke\Framework\Http\Middleware\RequestHandlerInterface;
 use GaryClarke\Framework\Routing\Router;
 use GaryClarke\Framework\Routing\RouterInterface;
@@ -13,9 +15,9 @@ class Kernel
     private string $appEnv;
 
     public function __construct(
-        private RouterInterface $router,
         private ContainerInterface $container,
-        private RequestHandlerInterface $requestHandler
+        private RequestHandlerInterface $requestHandler,
+        private EventDispatcher $eventDispatcher
     )
     {
         $this->appEnv = $this->container->get('APP_ENV');
@@ -30,6 +32,8 @@ class Kernel
         } catch (\Exception $exception) {
             $response = $this->createExceptionResponse($exception);
         }
+
+        $this->eventDispatcher->dispatch(new ResponseEvent($request, $response));
 
         return $response;
     }
