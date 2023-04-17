@@ -36,4 +36,19 @@ class Response
     {
         return $this->headers[$header];
     }
+
+    public function getHeaders(): array
+    {
+        return $this->headers;
+    }
+
+    public function setHeader($key, $value): void
+    {
+        $this->headers[$key] = $value;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
 }
