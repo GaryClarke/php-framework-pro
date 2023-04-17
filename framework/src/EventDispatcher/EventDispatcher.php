@@ -12,6 +12,8 @@ class EventDispatcher implements EventDispatcherInterface
     {
         // Loop over the listeners for the event
         foreach ($this->getListenersForEvent($event) as $listener) {
+            // Break if propagation stopped
+
             // Call the listener, passing in the event (each listener will be a callable)
             $listener($event);
         }
