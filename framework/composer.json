@@ -29,6 +29,7 @@
         "league/container": "^4.0.0",
         "symfony/dotenv": "^6.0",
         "twig/twig": "^3.0",
-        "doctrine/dbal": "^3.6"
+        "doctrine/dbal": "^3.6",
+        "psr/event-dispatcher": "^1.0"
     }
 }

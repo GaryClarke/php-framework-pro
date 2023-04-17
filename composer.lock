@@ -106,12 +106,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "762d8bfb6414ab007a9c4070b8453b1626a96992"
+                "reference": "3db3f61496c07e98f29e4a73bef72b3eae1380d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/762d8bfb6414ab007a9c4070b8453b1626a96992",
-                "reference": "762d8bfb6414ab007a9c4070b8453b1626a96992",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/3db3f61496c07e98f29e4a73bef72b3eae1380d6",
+                "reference": "3db3f61496c07e98f29e4a73bef72b3eae1380d6",
                 "shasum": ""
             },
             "require": {
@@ -127,9 +127,9 @@
                 "doctrine/coding-standard": "11.1.0",
                 "fig/log-test": "^1",
                 "jetbrains/phpstorm-stubs": "2022.3",
-                "phpstan/phpstan": "1.10.3",
+                "phpstan/phpstan": "1.10.9",
                 "phpstan/phpstan-strict-rules": "^1.5",
-                "phpunit/phpunit": "9.6.4",
+                "phpunit/phpunit": "9.6.6",
                 "psalm/plugin-phpunit": "0.18.4",
                 "squizlabs/php_codesniffer": "3.7.2",
                 "symfony/cache": "^5.4|^6.0",
@@ -210,7 +210,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-02T19:28:44+00:00"
+            "time": "2023-04-13T22:06:37+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -353,13 +353,14 @@
             "dist": {
                 "type": "path",
                 "url": "framework",
-                "reference": "e85bd4ba40b84186451d862f879985b6afa87acf"
+                "reference": "71f30e6b4ace462188a572bca5c4f5248c819aa6"
             },
             "require": {
                 "doctrine/dbal": "^3.6",
                 "league/container": "^4.0.0",
                 "nikic/fast-route": "dev-master",
                 "psr/container": "2.0.x-dev",
+                "psr/event-dispatcher": "^1.0",
                 "symfony/dotenv": "^6.0",
                 "twig/twig": "^3.0"
             },
@@ -481,12 +482,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/FastRoute.git",
-                "reference": "ea5d3abe8b9fc7d63bb42b0384cb1db60972ff68"
+                "reference": "34128a32009e1b41c4615bcd7d4c39968931e9ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/ea5d3abe8b9fc7d63bb42b0384cb1db60972ff68",
-                "reference": "ea5d3abe8b9fc7d63bb42b0384cb1db60972ff68",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/34128a32009e1b41c4615bcd7d4c39968931e9ea",
+                "reference": "34128a32009e1b41c4615bcd7d4c39968931e9ea",
                 "shasum": ""
             },
             "require": {
@@ -539,7 +540,7 @@
                 "issues": "https://github.com/nikic/FastRoute/issues",
                 "source": "https://github.com/nikic/FastRoute/tree/master"
             },
-            "time": "2021-06-21T15:01:25+00:00"
+            "time": "2023-03-16T08:06:25+00:00"
         },
         {
             "name": "psr/cache",
@@ -649,6 +650,59 @@
             "time": "2022-07-19T17:36:59+00:00"
         },
         {
+            "name": "psr/event-dispatcher",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/event-dispatcher.git",
+                "reference": "e275e2d67d53964a3f13e056886ecd769edee021"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/event-dispatcher/zipball/e275e2d67d53964a3f13e056886ecd769edee021",
+                "reference": "e275e2d67d53964a3f13e056886ecd769edee021",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "suggest": {
+                "fig/event-dispatcher-util": "Provides some useful PSR-14 utilities"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\EventDispatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Standard interfaces for event handling.",
+            "keywords": [
+                "events",
+                "psr",
+                "psr-14"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/event-dispatcher/tree/master"
+            },
+            "time": "2022-06-29T17:22:39+00:00"
+        },
+        {
             "name": "psr/log",
             "version": "dev-master",
             "source": {
@@ -705,12 +759,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dotenv.git",
-                "reference": "589c82257aa319ebf43c69b80396f8f9f1b23087"
+                "reference": "070cdb03ac12b8f3b2db7e6b89145ccebfd54543"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dotenv/zipball/589c82257aa319ebf43c69b80396f8f9f1b23087",
-                "reference": "589c82257aa319ebf43c69b80396f8f9f1b23087",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/070cdb03ac12b8f3b2db7e6b89145ccebfd54543",
+                "reference": "070cdb03ac12b8f3b2db7e6b89145ccebfd54543",
                 "shasum": ""
             },
             "require": {
@@ -771,7 +825,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-14T09:04:20+00:00"
+            "time": "2023-03-10T10:08:00+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -946,12 +1000,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "78c18ad58e48d3fff2f7812bb60b6176ee52689a"
+                "reference": "1812ca1ade2006c9238e7fa0562d438f401246a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/78c18ad58e48d3fff2f7812bb60b6176ee52689a",
-                "reference": "78c18ad58e48d3fff2f7812bb60b6176ee52689a",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/1812ca1ade2006c9238e7fa0562d438f401246a6",
+                "reference": "1812ca1ade2006c9238e7fa0562d438f401246a6",
                 "shasum": ""
             },
             "require": {
@@ -1010,7 +1064,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-15T09:14:05+00:00"
+            "time": "2023-04-14T11:18:53+00:00"
         }
     ],
     "packages-dev": [
@@ -1020,12 +1074,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "5519cc70ab30272bbc57cc8e906a1ee1d2ad9707"
+                "reference": "3f026afbd79aa419a889126333c25767ef354e09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/5519cc70ab30272bbc57cc8e906a1ee1d2ad9707",
-                "reference": "5519cc70ab30272bbc57cc8e906a1ee1d2ad9707",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/3f026afbd79aa419a889126333c25767ef354e09",
+                "reference": "3f026afbd79aa419a889126333c25767ef354e09",
                 "shasum": ""
             },
             "require": {
@@ -1100,7 +1154,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-24T10:44:40+00:00"
+            "time": "2023-04-14T12:13:08+00:00"
         }
     ],
     "aliases": [],
