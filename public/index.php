@@ -9,6 +9,13 @@ require_once BASE_PATH . '/vendor/autoload.php';
 
 $container = require BASE_PATH . '/config/services.php';
 
+$eventDispatcher = $container->get(\GaryClarke\Framework\EventDispatcher\EventDispatcher::class);
+$eventDispatcher->addListener(
+    \GaryClarke\Framework\Http\Event\ResponseEvent::class,
+    new \App\EventListener\ContentLengthListener()
+);
+
+
 // request received
 $request = Request::createFromGlobals();
 

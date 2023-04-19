@@ -38,6 +38,8 @@ $container->add(
     \GaryClarke\Framework\Http\Middleware\RequestHandler::class
 )->addArgument($container);
 
+$container->addShared(\GaryClarke\Framework\EventDispatcher\EventDispatcher::class);
+
 $container->add(GaryClarke\Framework\Http\Kernel::class)
     ->addArguments([
         $container,

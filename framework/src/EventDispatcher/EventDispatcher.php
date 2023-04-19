@@ -20,6 +20,14 @@ class EventDispatcher implements EventDispatcherInterface
 
     }
 
+    // $eventName e.g. Framework\EventDispatcher\ResponseEvent
+    public function addListener(string $eventName, callable $listener): self
+    {
+        $this->listeners[$eventName][] = $listener;
+
+        return $this;
+    }
+
     /**
      * @param object $event
      *   An event for which to return the relevant listeners.
@@ -29,6 +37,12 @@ class EventDispatcher implements EventDispatcherInterface
      */
     public function getListenersForEvent(object $event) : iterable
     {
-        //
+        $eventName = get_class($event);
+
+        if (array_key_exists($eventName, $this->listeners)) {
+            return $this->listeners[$eventName];
+        }
+
+        return [];
     }
 }
