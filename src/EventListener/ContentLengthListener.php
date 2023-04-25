@@ -14,6 +14,6 @@ class ContentLengthListener
             $response->setHeader('Content-Length', strlen($response->getContent()));
         }
 
-        dd($response);
+        dd('You got here!');
     }
 }
