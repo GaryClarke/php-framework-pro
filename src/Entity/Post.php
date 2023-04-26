@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-class Post
+use GaryClarke\Framework\Dbal\Entity;
+
+class Post extends Entity
 {
     public function __construct(
         private ?int $id,

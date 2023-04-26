@@ -4,16 +4,17 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\DBAL\Connection;
+use GaryClarke\Framework\Dbal\DataMapper;
 
 class UserMapper
 {
-    public function __construct(private Connection $connection)
+    public function __construct(private DataMapper $dataMapper)
     {
     }
 
     public function save(User $user): void
     {
-        $stmt = $this->connection->prepare("
+        $stmt = $this->dataMapper->getConnection()->prepare("
             INSERT INTO users (username, password, created_at)
             VALUES (:username, :password, :created_at)        
         ");
@@ -24,7 +25,7 @@ class UserMapper
 
         $stmt->executeStatement();
 
-        $id = $this->connection->lastInsertId();
+        $id = $this->dataMapper->save($user);
 
         $user->setId($id);
     }
