@@ -1,19 +1,21 @@
 <?php
 
 $dotenv = new \Symfony\Component\Dotenv\Dotenv();
-$dotenv->load(BASE_PATH . '/.env');
+$dotenv->load(dirname(__DIR__) . '/.env');
 
 $container = new \League\Container\Container();
 
 $container->delegate(new \League\Container\ReflectionContainer(true));
 
 # parameters for application config
-$routes = include BASE_PATH . '/routes/web.php';
+$basePath = dirname(__DIR__);
+$container->add('basePath', new \League\Container\Argument\Literal\StringArgument($basePath));
+$routes = include $basePath . '/routes/web.php';
 $appEnv = $_SERVER['APP_ENV'];
-$templatesPath = BASE_PATH . '/templates';
+$templatesPath = $basePath . '/templates';
 
 $container->add('APP_ENV', new \League\Container\Argument\Literal\StringArgument($appEnv));
-$databaseUrl = 'sqlite:///' . BASE_PATH . '/var/db.sqlite';
+$databaseUrl = 'sqlite:///' . $basePath . '/var/db.sqlite';
 
 $container->add(
     'base-commands-namespace',
@@ -87,7 +89,7 @@ $container->add(
     \GaryClarke\Framework\Console\Command\MigrateDatabase::class
 )->addArguments([
     \Doctrine\DBAL\Connection::class,
-    new \League\Container\Argument\Literal\StringArgument(BASE_PATH . '/migrations')
+    new \League\Container\Argument\Literal\StringArgument($basePath . '/migrations')
 ]);
 
 $container->add(\GaryClarke\Framework\Http\Middleware\RouterDispatch::class)
