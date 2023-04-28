@@ -9,6 +9,9 @@ require_once BASE_PATH . '/vendor/autoload.php';
 
 $container = require BASE_PATH . '/config/services.php';
 
+// bootstrapping
+require BASE_PATH . '/bootstrap/bootstrap.php';
+
 // request received
 $request = Request::createFromGlobals();
 
