@@ -19,7 +19,19 @@ class Response
 
     public function send(): void
     {
+        // start output buffering
+        ob_start();
+
+        // send headers
+        foreach ($this->headers as $key => $value) {
+            header("$key: $value");
+        }
+
+        // This will actually add the content to the buffer
         echo $this->content;
+
+        // Flush the buffer, sending the content to the client
+        ob_end_flush();
     }
 
     public function setContent(?string $content): void
