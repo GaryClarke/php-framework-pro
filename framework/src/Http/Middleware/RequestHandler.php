@@ -12,6 +12,7 @@ class RequestHandler implements RequestHandlerInterface
     private array $middleware = [
         ExtractRouteInfo::class,
         StartSession::class,
+        VerifyCsrfToken::class,
         RouterDispatch::class
     ];
 
@@ -30,9 +31,9 @@ class RequestHandler implements RequestHandlerInterface
         // Get the next middleware class to execute
         $middlewareClass = array_shift($this->middleware);
 
+        // Create a new instance of the middleware call process on it
         $middleware = $this->container->get($middlewareClass);
 
-        // Create a new instance of the middleware call process on it
         $response = $middleware->process($request, $this);
 
         return $response;
