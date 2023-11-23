@@ -4,7 +4,7 @@
 
 <hr>
 
-A comprehensive step-by-step video course on learning how to write PHP code that is testable.
+A comprehensive step-by-step video course created to help PHP developers grasp how frameworks function behind the scenes by actually building one. 
 
 
 To get started, all you need to do is:
